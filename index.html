@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prevenstoc UK — Stop losing money to stock you forgot about</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#152238; --navy-2:#1e3050; --paper:#FAF8F4; --paper-2:#F1EDE4;
+    --ink:#22262E; --ink-soft:#5B6270; --gold:#B8862E; --gold-soft:#DDBB7A;
+    --sage:#4A7C59; --line:#DFD9CB; --white:#FFFFFF;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#12161F; --paper-2:#171C27; --ink:#EDEBE4; --ink-soft:#A7ADBB; --line:#2A3040; --white:#1A2030;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#12161F; --paper-2:#171C27; --ink:#EDEBE4; --ink-soft:#A7ADBB; --line:#2A3040; --white:#1A2030;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif; line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+  a{color:inherit;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 28px; max-width:1120px; margin:0 auto;
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:600; font-size:20px;}
+  .brand-mark{
+    width:30px; height:30px; border-radius:7px; background:var(--navy);
+    display:flex; align-items:center; justify-content:center; color:var(--gold-soft); font-size:15px; flex-shrink:0;
+  }
+  nav a.navlink{font-size:14px; color:var(--ink-soft); text-decoration:none; margin-left:28px;}
+  nav a.navlink:hover{color:var(--ink);}
+  .nav-links{display:flex; align-items:center;}
+
+  /* ---------- HERO ---------- */
+  header.hero{padding:64px 0 88px;}
+  .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;}
+  .eyebrow-line{
+    display:flex; align-items:center; gap:10px; margin-bottom:22px;
+    font-size:14px; color:var(--sage); font-weight:600;
+  }
+  .eyebrow-line::before{content:""; width:24px; height:1px; background:var(--sage);}
+  h1.headline{
+    font-size:clamp(34px,5vw,54px); line-height:1.08; font-weight:600;
+    margin:0 0 24px; letter-spacing:-0.01em; max-width:15ch;
+  }
+  h1.headline em{font-style:italic; color:var(--navy-2); }
+  :root[data-theme="dark"] h1.headline em, body:not([data-theme="light"]) h1.headline em{color:var(--gold-soft);}
+  p.sub{font-size:18px; color:var(--ink-soft); max-width:46ch; margin:0 0 34px;}
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap; align-items:center;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:14px 26px;
+    border-radius:8px; font-weight:600; font-size:15px; text-decoration:none;
+    border:1px solid transparent; cursor:pointer; transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{background:var(--navy); color:var(--paper-2);}
+  .btn-primary:hover{transform:translateY(-1px); box-shadow:0 8px 20px rgba(21,34,56,0.25);}
+  .btn-ghost{background:transparent; color:var(--ink); border-color:var(--line);}
+  .btn-ghost:hover{border-color:var(--ink-soft);}
+  .hero-note{font-size:13px; color:var(--ink-soft); margin-top:16px;}
+  .trust-bar{
+    display:flex; flex-wrap:wrap; align-items:center; gap:12px;
+    margin-top:52px; padding-top:26px; border-top:1px solid var(--line);
+    font-size:13px; color:var(--ink-soft);
+  }
+  .trust-dot{width:3px; height:3px; border-radius:50%; background:var(--ink-soft); flex-shrink:0;}
+  @media (max-width:600px){ .trust-dot{display:none;} .trust-bar{flex-direction:column; align-items:flex-start; gap:6px;} }
+
+  /* ---------- LEDGER VISUAL ---------- */
+  .ledger{
+    background:var(--white); border:1px solid var(--line); border-radius:14px;
+    padding:26px 26px 20px; box-shadow:0 30px 60px -30px rgba(21,34,56,0.35);
+  }
+  .ledger-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:16px; padding-bottom:14px; border-bottom:1px solid var(--line);}
+  .ledger-head .t{font-family:'Fraunces',serif; font-weight:600; font-size:16px;}
+  .ledger-head .d{font-size:12px; color:var(--ink-soft);}
+  .ledger-row{
+    display:grid; grid-template-columns:1fr auto auto; gap:10px; align-items:center;
+    padding:11px 0; border-bottom:1px dashed var(--line); font-size:14px;
+  }
+  .ledger-row:last-child{border-bottom:none;}
+  .prod{display:flex; align-items:center; gap:10px;}
+  .prod .emoji{font-size:18px;}
+  .prod .name{font-weight:500;}
+  .prod .meta{font-size:12px; color:var(--ink-soft); display:block;}
+  .tag{font-size:11px; font-weight:600; padding:3px 9px; border-radius:20px; white-space:nowrap;}
+  .tag-crit{background:#F6DEDA; color:#8B3A2B;}
+  .tag-warn{background:#F7EAD1; color:#8A6218;}
+  .tag-ok{background:#DEEAE1; color:#33613F;}
+  :root[data-theme="dark"] .tag-crit, body:not([data-theme="light"]) .tag-crit{background:#3A2422; color:#E5A798;}
+  :root[data-theme="dark"] .tag-warn, body:not([data-theme="light"]) .tag-warn{background:#3A311E; color:#E3C583;}
+  :root[data-theme="dark"] .tag-ok, body:not([data-theme="light"]) .tag-ok{background:#20362A; color:#9BCBAA;}
+  .days{font-variant-numeric:tabular-nums; color:var(--ink-soft); font-size:13px;}
+
+  /* ---------- PROBLEM ---------- */
+  section.problem{padding:80px 0; border-top:1px solid var(--line);}
+  .section-label{font-size:13px; color:var(--sage); font-weight:600; margin-bottom:14px;}
+  h2{font-size:clamp(26px,3.4vw,36px); font-weight:600; margin:0 0 20px; max-width:20ch; line-height:1.18;}
+  .problem-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden; margin-top:40px;}
+  .problem-cell{background:var(--paper); padding:30px 28px;}
+  .problem-cell .num{font-family:'Fraunces',serif; font-size:26px; color:var(--navy-2); margin-bottom:10px; display:block;}
+  :root[data-theme="dark"] .problem-cell .num, body:not([data-theme="light"]) .problem-cell .num{color:var(--gold-soft);}
+  .problem-cell p{margin:0; color:var(--ink-soft); font-size:15px; max-width:38ch;}
+  .problem-cell strong{color:var(--ink); font-weight:600;}
+
+  /* ---------- HOW IT WORKS ---------- */
+  section.flow{padding:80px 0; background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .flow-steps{display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:48px; position:relative;}
+  .flow-step{padding:0 20px 0 0; position:relative;}
+  .flow-step:not(:last-child)::after{
+    content:"→"; position:absolute; right:-4px; top:6px; color:var(--ink-soft); font-size:18px;
+  }
+  .flow-step .si{font-family:'Fraunces',serif; font-size:15px; color:var(--sage); margin-bottom:10px; display:block;}
+  .flow-step h3{font-size:17px; margin:0 0 8px; font-weight:600;}
+  .flow-step p{font-size:14px; color:var(--ink-soft); margin:0;}
+
+  /* ---------- FEATURES ---------- */
+  section.features{padding:88px 0;}
+  .feat-list{margin-top:48px; border-top:1px solid var(--line);}
+  .feat-row{
+    display:grid; grid-template-columns:220px 1fr; gap:40px; padding:30px 0;
+    border-bottom:1px solid var(--line); align-items:start;
+  }
+  .feat-row h3{margin:0; font-size:19px; font-weight:600;}
+  .feat-row p{margin:0; color:var(--ink-soft); font-size:15px; max-width:56ch;}
+
+  /* ---------- FOUNDER ---------- */
+  section.founder{padding:88px 0; border-top:1px solid var(--line);}
+  .founder-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;}
+  .founder-quote{
+    font-family:'Fraunces',serif; font-size:clamp(20px,2.4vw,26px); line-height:1.45; font-style:italic;
+    color:var(--ink); margin:0 0 22px;
+  }
+  .founder-name{font-weight:600; font-size:15px;}
+  .founder-role{font-size:13px; color:var(--ink-soft);}
+  .founder-photo{
+    aspect-ratio:4/5; border-radius:14px; background:linear-gradient(160deg,var(--navy),var(--navy-2));
+    display:flex; align-items:center; justify-content:center; color:var(--gold-soft); font-size:56px;
+    box-shadow:0 30px 60px -30px rgba(21,34,56,0.4);
+  }
+
+  /* ---------- PILOT CTA ---------- */
+  section.pilot{padding:90px 0; background:var(--navy); color:var(--paper-2);}
+  section.pilot .section-label{color:var(--gold-soft);}
+  section.pilot h2{color:var(--paper-2); max-width:22ch;}
+  section.pilot p.sub2{color:#B7C0D1; max-width:52ch; font-size:16px; margin:0 0 32px;}
+  section.pilot .btn-primary{background:var(--gold); color:#20140A;}
+  section.pilot .btn-ghost{border-color:#3A4C6B; color:var(--paper-2);}
+  .pilot-points{list-style:none; margin:32px 0 0; padding:0; display:grid; gap:12px; max-width:46ch;}
+  .pilot-points li{display:flex; gap:10px; font-size:14.5px; color:#D6DCE7;}
+  .pilot-points li::before{content:"—"; color:var(--gold-soft); flex-shrink:0;}
+
+  /* ---------- CONTACT ---------- */
+  section.contact{padding:88px 0; border-top:1px solid var(--line);}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden; margin-top:40px;}
+  .contact-card{
+    background:var(--paper); padding:32px 30px; text-decoration:none; color:var(--ink);
+    display:flex; flex-direction:column; gap:6px; transition:background .15s ease;
+  }
+  .contact-card:hover{background:var(--paper-2);}
+  .contact-label{font-size:13px; color:var(--sage); font-weight:600;}
+  .contact-value{font-family:'Fraunces',serif; font-size:22px; font-weight:600; color:var(--ink);}
+  .contact-sub{font-size:13px; color:var(--ink-soft);}
+  @media (max-width:600px){ .contact-grid{grid-template-columns:1fr;} }
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:44px 0 50px; font-size:13px; color:var(--ink-soft);}
+  .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; border-top:1px solid var(--line); padding-top:24px;}
+  .footer-brand{display:flex; align-items:center; gap:8px; font-family:'Fraunces',serif; font-weight:600; color:var(--ink);}
+
+  @media (max-width:860px){
+    .hero-grid, .founder-grid{grid-template-columns:1fr; gap:36px;}
+    .problem-grid{grid-template-columns:1fr;}
+    .flow-steps{grid-template-columns:1fr 1fr; row-gap:34px;}
+    .flow-step:nth-child(2)::after{display:none;}
+    .feat-row{grid-template-columns:1fr; gap:8px;}
+    nav a.navlink:not(.btn){display:none;}
+  }
+  @media (max-width:520px){
+    .flow-steps{grid-template-columns:1fr;}
+    .flow-step::after{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important; scroll-behavior:auto !important;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand"><span class="brand-mark">P</span>Prevenstoc UK</div>
+  <div class="nav-links">
+    <a class="navlink" href="#problem">The problem</a>
+    <a class="navlink" href="#how">How it works</a>
+    <a class="navlink" href="#pilot">Pilot programme</a>
+    <a class="btn btn-ghost navlink" style="margin-left:20px;" href="#contact">Get in touch</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow-line">Built for UK off-licences, convenience stores &amp; forecourts</div>
+      <h1 class="headline">Stop losing money to stock <em>you forgot you had</em></h1>
+      <p class="sub">Prevenstoc tracks every delivery down to its expiry date, tells you exactly what to check and when, and turns a two-hour stock audit into a two-minute one.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#pilot">Join the pilot programme</a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
+      </div>
+      <p class="hero-note">Free for pilot stores · No card required · Built by someone who worked the till</p>
+    </div>
+    <div class="ledger" aria-hidden="true">
+      <div class="ledger-head">
+        <span class="t">Today's expiry check</span>
+        <span class="d">Camden Road Off-Licence</span>
+      </div>
+      <div class="ledger-row">
+        <div class="prod"><span class="emoji">🥛</span><span><span class="name">Oatly Barista 1L</span><span class="meta">Batch received 14 Aug · Chiller 2</span></span></div>
+        <span class="days">2 days left</span>
+        <span class="tag tag-crit">Check today</span>
+      </div>
+      <div class="ledger-row">
+        <div class="prod"><span class="emoji">🍞</span><span><span class="name">Warburtons Toastie</span><span class="meta">Batch received 27 Aug · Shelf A3</span></span></div>
+        <span class="days">5 days left</span>
+        <span class="tag tag-warn">This week</span>
+      </div>
+      <div class="ledger-row">
+        <div class="prod"><span class="emoji">🍫</span><span><span class="name">Cadbury Dairy Milk 200g</span><span class="meta">Batch received 2 Jul · Shelf B1</span></span></div>
+        <span class="days">142 days left</span>
+        <span class="tag tag-ok">On track</span>
+      </div>
+      <div class="ledger-row">
+        <div class="prod"><span class="emoji">🍺</span><span><span class="name">Peroni 4-pack</span><span class="meta">Batch received 30 Jul · Cage 1</span></span></div>
+        <span class="days">218 days left</span>
+        <span class="tag tag-ok">On track</span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="trust-bar">
+      <span>Registered UK company, No. 17390642</span>
+      <span class="trust-dot"></span>
+      <span>London, United Kingdom</span>
+      <span class="trust-dot"></span>
+      <span>Built from real till experience, not a spec sheet</span>
+    </div>
+  </div>
+</header>
+
+<section class="problem" id="problem">
+  <div class="wrap">
+    <div class="section-label">The problem</div>
+    <h2>Booker's invoice never tells you when something expires. So nobody finds out until it's too late.</h2>
+    <div class="problem-grid">
+      <div class="problem-cell">
+        <span class="num">£1,200–£6,000</span>
+        <p>is what enterprise inventory software costs independent retailers per day in consulting fees — <strong>completely out of reach</strong> for a single shop.</p>
+      </div>
+      <div class="problem-cell">
+        <span class="num">50 vs. 46</span>
+        <p>The till says fifty units sold, the shelf has forty-six left, and <strong>nobody can tell you why</strong> without a full manual recount.</p>
+      </div>
+      <div class="problem-cell">
+        <span class="num">Zero</span>
+        <p>affordable tools exist that were actually <strong>built for a single independent shop</strong>, rather than adapted down from a supermarket chain's system.</p>
+      </div>
+      <div class="problem-cell">
+        <span class="num">35,000+</span>
+        <p>independent stores across the UK are running this exact risk every day, most with <strong>no inventory technology at all</strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flow" id="how">
+  <div class="wrap">
+    <div class="section-label">How it works</div>
+    <h2>Four steps, and the shelf never surprises you again</h2>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <span class="si">01</span>
+        <h3>Receive stock</h3>
+        <p>Scan the barcode, say the product name aloud, or import a Booker invoice — every delivery becomes its own tracked batch.</p>
+      </div>
+      <div class="flow-step">
+        <span class="si">02</span>
+        <h3>Get told what to check</h3>
+        <p>Prevenstoc estimates expiry by category when a supplier doesn't provide one, then flags what needs checking today.</p>
+      </div>
+      <div class="flow-step">
+        <span class="si">03</span>
+        <h3>Sell with FIFO built in</h3>
+        <p>Every sale deducts from the oldest batch automatically, so the stock that's ageing fastest sells first, without anyone thinking about it.</p>
+      </div>
+      <div class="flow-step">
+        <span class="si">04</span>
+        <h3>Audit in minutes</h3>
+        <p>Count the shelf, log the variance, and see the shrinkage cost immediately — no spreadsheets, no end-of-week guesswork.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="wrap">
+    <div class="section-label">What you get</div>
+    <h2>Everything a small shop needs, none of what it doesn't</h2>
+    <div class="feat-list">
+      <div class="feat-row">
+        <h3>Expiry intelligence</h3>
+        <p>Category-based shelf-life estimates, escalating alerts, and a check schedule that tells staff exactly which shelf to look at today — not just a generic reminder.</p>
+      </div>
+      <div class="feat-row">
+        <h3>Smart ordering</h3>
+        <p>Reorder suggestions ranked by urgency and sales speed, with a budget cap that reprioritises the list automatically when money's tight this week.</p>
+      </div>
+      <div class="feat-row">
+        <h3>Compliance built in</h3>
+        <p>An age-verification log for alcohol, tobacco and vapes that replaces the paper register under the till — searchable, dated, and ready if a licensing officer asks.</p>
+      </div>
+      <div class="feat-row">
+        <h3>Reports that mean something</h3>
+        <p>Nine reports covering sales, margin, VAT, wastage and shrinkage — built from what's actually happened in your shop, not a template dashboard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="founder">
+  <div class="wrap founder-grid">
+    <div class="founder-photo">JM</div>
+    <div>
+      <div class="section-label">Why this exists</div>
+      <p class="founder-quote">"I worked the till in petrol station shops and off-licences across the UK. I watched good stock go in the bin because nobody knew it was there, and I watched owners lose hours every week to a stock count that a proper system could do in minutes. I built Prevenstoc because I needed it myself, long before I could sell it to anyone else."</p>
+      <div class="founder-name">Jagadesh Manokaran</div>
+      <div class="founder-role">Founder, Prevenstoc UK Ltd</div>
+    </div>
+  </div>
+</section>
+
+<section class="pilot" id="pilot">
+  <div class="wrap">
+    <div class="section-label">Pilot programme</div>
+    <h2>We're onboarding the first stores now — free, for a limited group</h2>
+    <p class="sub2">Prevenstoc is working software today, built from real shift experience. We're looking for a handful of independent stores willing to try it early and tell us what's missing.</p>
+    <ul class="pilot-points">
+      <li>Free access for the length of the pilot — no payment details needed</li>
+      <li>Onboarding handled directly with the founder, not a support queue</li>
+      <li>Your feedback shapes what gets built next</li>
+    </ul>
+    <div class="cta-row" style="margin-top:32px;">
+      <a class="btn btn-primary" href="mailto:info@prevenstoc.co.uk?subject=Prevenstoc%20pilot%20programme">Apply for the pilot</a>
+      <a class="btn btn-ghost" href="#contact">Ask a question first</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-label">Get in touch</div>
+    <h2>Talk to us directly — no forms, no ticket queue</h2>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:info@prevenstoc.co.uk">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">info@prevenstoc.co.uk</span>
+        <span class="contact-sub">Usually answered within one working day</span>
+      </a>
+      <a class="contact-card" href="tel:+448833927384">
+        <span class="contact-label">Phone</span>
+        <span class="contact-value">+44 883 392 7384</span>
+        <span class="contact-sub">Monday–Friday, during UK business hours</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="footer-brand"><span class="brand-mark" style="background:var(--navy);">P</span>Prevenstoc UK</div>
+    <div>Prevenstoc UK Ltd · Company No. 17390642 · London, United Kingdom</div>
+    <div><a href="mailto:info@prevenstoc.co.uk">info@prevenstoc.co.uk</a> · <a href="tel:+448833927384">+44 883 392 7384</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
